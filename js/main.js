@@ -122,6 +122,50 @@ async function loadProjects() {
   }
 }
 
+/* ---------- Certifications ---------- */
+// Missing dates or verification links render as visible TODOs, never as blanks that look complete.
+function renderCert(c) {
+  const li = el("li", `cert${c.status === "upcoming" ? " cert--upcoming" : ""}`);
+  li.append(el("span", "cert__issuer mono", c.issuer), el("span", "cert__name", c.name));
+
+  const meta = el("div", "cert__meta mono");
+  if (c.date) meta.append(el("span", null, c.date));
+  if (c.url) {
+    const a = el("a", null, "verify ↗");
+    a.href = c.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.setAttribute("aria-label", `Verify ${c.name} (opens in a new tab)`);
+    meta.append(a);
+  } else if (c.status !== "upcoming") {
+    meta.append(el("span", "todo", c.date ? "TODO(demian): link" : "TODO(demian): date + link"));
+  }
+  li.append(meta);
+  return li;
+}
+
+async function loadCerts() {
+  const list = document.querySelector("[data-certs]");
+  if (!list) return;
+  try {
+    const res = await fetch("data/certs.json");
+    if (!res.ok) throw new Error(res.status);
+    const certs = await res.json();
+    const pending = el("li", "cert cert--upcoming");
+    const pendingMeta = el("div", "cert__meta mono");
+    pendingMeta.append(el("span", "todo", "TODO(demian): exact list"));
+    pending.append(
+      el("span", "cert__issuer mono", "DataCamp"),
+      el("span", "cert__name", "More Power BI, Excel and GitHub certificates"),
+      pendingMeta,
+    );
+    list.replaceChildren(...certs.map(renderCert), pending);
+    observeReveal(list.querySelectorAll(".cert"));
+  } catch (err) {
+    list.replaceChildren(el("li", "mono muted", "Could not load data/certs.json."));
+  }
+}
+
 /* ---------- Reveal on scroll ---------- */
 function observeReveal(nodes) {
   if (reduceMotion || !("IntersectionObserver" in window)) return;
@@ -180,3 +224,5 @@ function writeLog(lines) {
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
 loadProjects().then((projects) => writeLog(bootLines(projects)));
+loadCerts();
+observeReveal(document.querySelectorAll(".timeline__item"));

@@ -25,6 +25,8 @@
     <a class="nav__brand mono" href="#top" aria-label="Demian Cruz, back to top">dc<span class="accent">@</span>usfq<span class="caret" aria-hidden="true">_</span></a>
     <nav aria-label="Primary">
       <ul class="nav__links">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
         <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
@@ -53,6 +55,86 @@
             <span class="btn btn--todo" aria-disabled="true" title="CV PDF not added yet">CV (PDF) <span class="todo">TODO(demian)</span></span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <div class="about__photo" role="img" aria-label="Photo placeholder">
+          <span class="about__initials mono" aria-hidden="true">DC</span>
+          <span class="todo">TODO(demian): photo</span>
+        </div>
+        <div>
+          <header class="section__head">
+            <p class="section__path mono">~/about</p>
+            <h2 id="about-title" data-i18n="about.title">About</h2>
+          </header>
+          <p class="about__text" data-i18n="about.p1">I'm a 7th-semester Computer Science student at Universidad San Francisco de Quito (USFQ), with a minor in Data Analytics, based in Quito, Ecuador.</p>
+          <p class="about__text" data-i18n="about.p2">I build automation and data tools where an LLM helps but doesn't get the last word: typed contracts, deterministic checks and tests decide what gets saved.</p>
+          <dl class="facts mono">
+            <div><dt data-i18n="about.based">based in</dt><dd>Quito, Ecuador</dd></div>
+            <div><dt data-i18n="about.study">studying</dt><dd>CS @ USFQ · Minor in Data Analytics</dd></div>
+            <div><dt data-i18n="about.languages">languages</dt><dd>Spanish · English B2 (Cambridge FCE), C1/C2 in progress · Italian A2</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="section__path mono">~/experience</p>
+          <h2 id="experience-title" data-i18n="experience.title">Experience</h2>
+        </header>
+        <ol class="timeline">
+          <li class="timeline__item timeline__item--now">
+            <p class="timeline__date mono"><time datetime="2026-10">Oct 2026</time> – <span data-i18n="common.present">present</span></p>
+            <h3 class="timeline__role"><span data-i18n="exp.movmo.role">Development Intern</span> · <span class="timeline__org">Movmo</span></h3>
+            <p class="timeline__text" data-i18n="exp.movmo.text">I build internal Python tools for the sales team.</p>
+            <ul class="timeline__tags mono"><li>Python</li></ul>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__date mono"><time datetime="2026-05">May</time> – <time datetime="2026-07">Jul 2026</time></p>
+            <h3 class="timeline__role"><span data-i18n="exp.gsc.role">Operations, Data &amp; Automation Intern</span> · <span class="timeline__org">Galápagos Science Center</span></h3>
+            <ul class="timeline__list" data-i18n="exp.gsc.list">
+              <li>Built the admissions validation flow in Power Automate.</li>
+              <li>Reconciled two student databases.</li>
+              <li>Built a form with Google Apps Script.</li>
+            </ul>
+            <p class="timeline__note"><span class="todo">TODO(demian): confirm figures (validation levels, fields, records) before publishing them</span></p>
+            <ul class="timeline__tags mono"><li>Power Automate</li><li>Google Apps Script</li></ul>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__date mono"><time datetime="2024-01">Jan</time> – <time datetime="2024-08">Aug 2024</time></p>
+            <h3 class="timeline__role"><span data-i18n="exp.593.role">English Teacher</span> · <span class="timeline__org">593English</span></h3>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="section__path mono">~/education</p>
+          <h2 id="education-title" data-i18n="education.title">Education</h2>
+        </header>
+        <ol class="timeline">
+          <li class="timeline__item timeline__item--now">
+            <p class="timeline__date mono"><time datetime="2023-08">Aug 2023</time> – <span data-i18n="common.present">present</span></p>
+            <h3 class="timeline__role"><span data-i18n="edu.usfq.role">B.Sc. Computer Science, Minor in Data Analytics</span> · <span class="timeline__org">USFQ</span></h3>
+            <p class="timeline__text" data-i18n="edu.usfq.text">Universidad San Francisco de Quito. Currently in 7th semester.</p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__date mono"><time datetime="2026-02">Feb</time> – <time datetime="2026-06">Jun 2026</time></p>
+            <h3 class="timeline__role"><span data-i18n="edu.coil.role">COIL international project</span> · <span class="timeline__org">Tec de Monterrey – USFQ</span></h3>
+            <p class="timeline__text" data-i18n="edu.coil.text">Origin of <a href="https://github.com/demianc14/power-factor-analyzer" target="_blank" rel="noopener">power-factor-analyzer</a>.</p>
+          </li>
+        </ol>
+
+        <h3 class="subhead mono" id="certs-title" data-i18n="education.certs">Certifications &amp; courses</h3>
+        <ul class="certs" data-certs aria-labelledby="certs-title">
+          <li class="mono muted">loading certs.json…</li>
+        </ul>
       </div>
     </section>
 

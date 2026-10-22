@@ -1,0 +1,11 @@
+[
+  { "issuer": "AWS Academy", "name": "Microservices and CI/CD Pipeline Builder", "date": "2026", "url": null, "stack": "python-ai" },
+  { "issuer": "IBM", "name": "Introducción a la IA", "date": "2025", "url": null, "stack": "python-ai" },
+  { "issuer": "Google", "name": "Prompting para tareas de trabajo", "date": "2025", "url": null, "stack": "python-ai" },
+  { "issuer": "ESPOL", "name": "AI Automation & Agent Architecture", "date": "Starts Nov 2026", "status": "upcoming", "url": null, "stack": "python-ai" },
+  { "issuer": "DataCamp", "name": "Introduction to AI Agents", "date": null, "url": null, "stack": "python-ai" },
+  { "issuer": "DataCamp", "name": "Claude Code 101", "date": null, "url": null, "stack": "python-ai" },
+  { "issuer": "DataCamp", "name": "Working with APIs in Python", "date": null, "url": null, "stack": "python-ai" },
+  { "issuer": "DataCamp", "name": "Introduction to Power BI", "date": null, "url": null, "stack": "power-bi" },
+  { "issuer": "DataCamp", "name": "Introduction to Excel", "date": null, "url": null, "stack": "excel" }
+]
