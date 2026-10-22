@@ -143,13 +143,13 @@ function bootLines(projects) {
   const ci = projects.filter((p) => (p.badges || []).some((b) => b.label.startsWith("CI"))).length;
   const badges = projects.reduce((n, p) => n + (p.badges || []).length, 0);
   // Short enough to fit one line at 375px.
-  const dots = (label) => `${label} `.padEnd(14, ".");
+  const dots = (label) => `${label} `.padEnd(11, ".");
   return [
     ["cmd", "$ ./load_profile --user demianc14"],
     ["ok", `✓ ${dots("profile")} Quito, EC · CS @ USFQ`],
     ["ok", `✓ ${dots("projects")} ${projects.length} loaded`],
     ["ok", `✓ ${dots("ci")} ${ci} pipelines linked`],
-    ["ok", `✓ ${dots("badges")} ${badges} verifiable, 0 invented`],
+    ["ok", `✓ ${dots("badges")} ${badges} verified, 0 invented`],
   ];
 }
 
