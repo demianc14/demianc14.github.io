@@ -1,0 +1,91 @@
+[
+  {
+    "stack": "python-ai",
+    "title": "family-expense-bot",
+    "summary": "Telegram bot that turns free-text expenses into structured records. The LLM extracts and quotes; deterministic rules validate every field, and nothing is saved until a person confirms. Same logic re-implemented as an n8n agent.",
+    "tags": ["Python", "Pydantic", "Gemini API", "Telegram", "n8n", "SQLite", "pytest"],
+    "repo": "https://github.com/demianc14/family-expense-bot",
+    "preview": "assets/previews/family-expense-bot.jpg",
+    "previewAlt": "Budget Mini App screens with synthetic data: monthly pockets, a 'can I spend this?' check and an expense confirmation",
+    "command": "pytest && ruff check . && mypy",
+    "badges": [
+      { "label": "CI ✓", "source": "https://github.com/demianc14/family-expense-bot/actions/workflows/ci.yml" },
+      { "label": "400+ tests", "source": "https://github.com/demianc14/family-expense-bot#readme" },
+      { "label": "mypy", "source": "https://github.com/demianc14/family-expense-bot#readme" }
+    ]
+  },
+  {
+    "stack": "python-ai",
+    "title": "WC_predictor",
+    "summary": "National-team football predictor, born for the 2026 World Cup. Pydantic-contracted ETL, StatsBomb xG, a Dixon-Coles model and Monte Carlo simulation, backtested against Elo and betting odds. The LLM is an optional narrator.",
+    "tags": ["Python", "Pydantic", "Monte Carlo", "Dixon-Coles", "GitHub Actions"],
+    "repo": "https://github.com/demianc14/WC_predictor",
+    "demo": "https://demianc14.github.io/WC_predictor/",
+    "preview": "assets/previews/WC_predictor.jpg",
+    "previewAlt": "WC_predictor website home: dark football-pitch layout with the 2026-27 season headline",
+    "command": "pytest   # 111 tests, offline",
+    "badges": [
+      { "label": "CI ✓", "source": "https://github.com/demianc14/WC_predictor/actions/workflows/ci.yml" },
+      { "label": "111 tests", "source": "https://github.com/demianc14/WC_predictor#readme" },
+      { "label": "mypy", "source": "https://github.com/demianc14/WC_predictor#readme" }
+    ]
+  },
+  {
+    "stack": "python-ai",
+    "title": "internship-matcher",
+    "summary": "CLI that compares a LaTeX CV against a job posting. The LLM extracts requirements with verified literal quotes; a deterministic layer over a YAML vocabulary computes the coverage.",
+    "tags": ["Python", "Pydantic", "Gemini API", "pytest", "mypy"],
+    "repo": "https://github.com/demianc14/internship-matcher",
+    "command": "python -m src.cli bullets tests/fixtures/cv_sample.tex",
+    "badges": [
+      { "label": "LLM regression 10/10", "source": "https://github.com/demianc14/internship-matcher#readme" }
+    ]
+  },
+  {
+    "stack": "python-ai",
+    "title": "power-factor-analyzer",
+    "summary": "ETL over industrial electricity bills (CFE, Mexico): power factor, capacitor sizing and ROI, exported to Excel. Started in a COIL project with Tec de Monterrey and Kiin Energy. Sample data is fictitious.",
+    "tags": ["Python", "pandas", "Excel", "pytest", "GitHub Actions"],
+    "repo": "https://github.com/demianc14/power-factor-analyzer",
+    "preview": "assets/previews/power-factor-analyzer.jpg",
+    "previewAlt": "Bar and line chart of power factor per billing period for two fictitious clients, against the 0.90 and 0.95 thresholds",
+    "command": "python -m power_factor.cli run --input data/sample/coil_sample.xlsx",
+    "badges": [
+      { "label": "CI ✓", "source": "https://github.com/demianc14/power-factor-analyzer/actions/workflows/ci.yml" },
+      { "label": "176 tests", "source": "https://github.com/demianc14/power-factor-analyzer#readme" },
+      { "label": "100% coverage", "source": "https://github.com/demianc14/power-factor-analyzer#readme" },
+      { "label": "mypy --strict", "source": "https://github.com/demianc14/power-factor-analyzer#readme" }
+    ]
+  },
+  {
+    "stack": "python-ai",
+    "title": "MetalurgicaAndina_QC",
+    "summary": "ETL pipeline for messy production data with a report that quantifies every cleaning decision. Ambiguous dates fail fast instead of being guessed. Class case study (IIN2002).",
+    "tags": ["Python", "pandas", "pytest", "mypy"],
+    "repo": "https://github.com/demianc14/MetalurgicaAndina_QC",
+    "command": "python -m src.cli   # Extract -> Transform -> Load",
+    "badges": [
+      { "label": "90/90 rows match", "source": "https://github.com/demianc14/MetalurgicaAndina_QC#readme" }
+    ]
+  },
+  {
+    "stack": "python-ai",
+    "secondary": true,
+    "title": "sistema-eventos",
+    "summary": "Music event management system built by a team of three.",
+    "tags": ["Flask", "MySQL"],
+    "repo": "https://github.com/demianc14/sistema-eventos",
+    "command": "git clone https://github.com/demianc14/sistema-eventos",
+    "badges": []
+  },
+  {
+    "stack": "python-ai",
+    "secondary": true,
+    "title": "Tennis Session Tracker",
+    "summary": "REST API to log training sessions and matches: type, duration, intensity, energy before and after, gym exercises and results.",
+    "tags": ["Java 17", "Spring Boot", "JPA", "H2", "JUnit 5"],
+    "repo": "https://github.com/demianc14/tennis",
+    "command": "./mvnw spring-boot:run",
+    "badges": []
+  }
+]
