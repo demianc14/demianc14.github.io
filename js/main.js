@@ -137,7 +137,9 @@ function renderCert(c) {
     a.rel = "noopener";
     a.setAttribute("aria-label", `Verify ${c.name} (opens in a new tab)`);
     meta.append(a);
-  } else if (c.status !== "upcoming") {
+  }
+  if (c.todo) meta.append(el("span", "todo", c.todo));
+  else if (!c.url && c.status !== "upcoming") {
     meta.append(el("span", "todo", c.date ? "TODO(demian): link" : "TODO(demian): date + link"));
   }
   li.append(meta);
