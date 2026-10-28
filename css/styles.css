@@ -392,6 +392,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   border: 1px solid var(--line-strong); border-radius: 14px;
   box-shadow: var(--shadow);
 }
+/* Narrower desktops: the fixed corner would cover the shortcuts, so the dock sits under them in the hero. */
+@media (max-width: 1279px) {
+  .dock { position: absolute; right: auto; left: max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter))); bottom: 32px; }
+}
 .dock__item {
   display: inline-flex; align-items: center; gap: 8px;
   min-height: 40px; padding: 0 11px;
