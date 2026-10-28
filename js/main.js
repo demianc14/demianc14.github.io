@@ -30,6 +30,8 @@ if (hero && !reduceMotion) {
 }
 
 /* ---------- Project cards ---------- */
+const slug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 const el = (tag, cls, text) => {
   const n = document.createElement(tag);
   if (cls) n.className = cls;
@@ -64,6 +66,7 @@ function terminalPreview(p) {
 
 function renderCard(p, tpl) {
   const card = tpl.content.firstElementChild.cloneNode(true);
+  card.id = `project-${slug(p.title)}`;
   renderPreview(card.querySelector(".card__preview"), p);
   card.querySelector(".card__title").textContent = p.title;
   card.querySelector(".card__summary").textContent = p.summary;
@@ -148,7 +151,7 @@ function renderCert(c) {
 
 async function loadCerts() {
   const list = document.querySelector("[data-certs]");
-  if (!list) return;
+  if (!list) return [];
   try {
     const res = await fetch("data/certs.json");
     if (!res.ok) throw new Error(res.status);
@@ -163,8 +166,10 @@ async function loadCerts() {
     );
     list.replaceChildren(...certs.map(renderCert), pending);
     observeReveal(list.querySelectorAll(".cert"));
+    return certs;
   } catch (err) {
     list.replaceChildren(el("li", "mono muted", "Could not load data/certs.json."));
+    return [];
   }
 }
 
@@ -225,6 +230,17 @@ function writeLog(lines) {
 }
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
-loadProjects().then((projects) => writeLog(bootLines(projects)));
-loadCerts();
+const projectsReady = loadProjects();
+projectsReady.then((projects) => writeLog(bootLines(projects)));
+const certsReady = loadCerts();
 observeReveal(document.querySelectorAll(".timeline__item"));
+
+// Shared with js/desktop.js, so the windows render from the same data and markup as the page.
+window.portfolio = {
+  el,
+  slug,
+  reduceMotion,
+  renderCard: (p) => renderCard(p, document.getElementById("card-tpl")),
+  renderCert,
+  ready: Promise.all([projectsReady, certsReady]).then(([projects, certs]) => ({ projects, certs })),
+};

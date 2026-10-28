@@ -342,6 +342,132 @@ ul { list-style: none; margin: 0; padding: 0; }
 .cert__meta a { color: var(--accent); text-underline-offset: 3px; }
 .cert--upcoming { border-style: dashed; }
 
+/* ---------- Desktop mode: clock, shortcuts, dock ---------- */
+.nav__clock { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+@media (max-width: 560px) { .nav__clock { display: none; } }
+
+.desk-only { display: none; }
+:root.is-desktop .desk-only { display: revert; }
+:root.is-desktop .dock.desk-only { display: flex; }
+
+.desk { margin-top: 36px; }
+.desk__icons { display: flex; flex-wrap: wrap; gap: 0; }
+.desk-icon {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  width: 88px; padding: 10px 4px 8px;
+  border-radius: 10px; border: 1px solid transparent;
+  text-decoration: none; color: var(--text);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.desk-icon:hover, .desk-icon:focus-visible { background: var(--accent-soft); border-color: var(--line-strong); }
+.desk-icon__file {
+  position: relative; display: grid; place-items: end center;
+  width: 40px; height: 48px; padding-bottom: 7px;
+  font-size: 10px; letter-spacing: 0.02em; color: var(--accent);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px 12px 4px 4px;
+  box-shadow: var(--shadow);
+}
+.desk-icon__file::before {
+  content: ""; position: absolute; top: 9px; left: 8px; right: 12px; height: 2px;
+  background: var(--line-strong);
+  box-shadow: 0 6px 0 var(--line-strong), 0 12px 0 var(--line-strong);
+}
+.desk-icon__label {
+  font-family: var(--font-sans); font-size: 13px; line-height: 1.3; text-align: center;
+  max-width: 100%; overflow-wrap: break-word;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+:root.is-desktop .hero { padding-bottom: 112px; }
+:root.is-desktop .hero__copy { width: fit-content; max-width: 780px; }
+:root.is-desktop .hero__lede { max-width: 52ch; }
+/* Fixed while the hero is on screen; hidden with the windows once you scroll into the page. */
+.dock {
+  position: fixed; right: 24px; bottom: 24px; z-index: 20;
+  gap: 2px; padding: 5px;
+  background: color-mix(in srgb, var(--bg-raised) 85%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line-strong); border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.dock__item {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 40px; padding: 0 11px;
+  background: transparent; color: var(--text);
+  border: 0; border-radius: 10px;
+  font-size: 13px; cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.dock__item:hover { background: var(--accent-soft); transform: translateY(-2px); }
+.dock__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.dock__item:nth-child(n+2):nth-child(-n+3) .dock__dot { background: var(--todo); }
+
+/* Small screens: the shortcuts become a swipeable row that scrolls to each section. */
+@media (max-width: 899px), (pointer: coarse) {
+  .desk__icons { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); }
+  .desk__icons::-webkit-scrollbar { display: none; }
+  .desk-icon { width: 84px; flex: none; }
+}
+
+/* ---------- Windows (WinBox theme) ---------- */
+.winbox.wb-dc {
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+.wb-dc .wb-header { height: 38px; line-height: 38px; color: var(--muted); border-bottom: 1px solid var(--line); background: var(--bg-sunken); }
+.wb-dc .wb-title { font-family: var(--font-mono); font-size: 12.5px; }
+.wb-dc .wb-drag { padding-left: 14px; }
+.wb-dc .wb-body { top: 38px; background: var(--bg-raised); color: var(--text); }
+.wb-dc .wb-control * { opacity: 0.6; transition: opacity 0.2s; }
+.wb-dc .wb-control *:hover, .wb-dc .wb-control *:focus-visible { opacity: 1; }
+.winbox.wb-dc:focus-visible { outline: none; }
+.wb-dc.focus { border-color: color-mix(in srgb, var(--accent) 55%, var(--line-strong)); }
+.wb-dc.focus .wb-header { color: var(--text); }
+.wb-dc.focus .wb-title::before { content: "● "; color: var(--accent); }
+:root[data-theme="light"] .wb-dc .wb-control * { filter: invert(1); }
+@media (prefers-color-scheme: light) { :root:not([data-theme]) .wb-dc .wb-control * { filter: invert(1); } }
+
+:root.desk-away .winbox, :root.desk-away .dock { visibility: hidden; }
+
+.wb-dc .card { border: 0; border-radius: 0; box-shadow: none; transform: none; min-height: 100%; }
+.wb-dc .card:hover, .wb-dc .card:focus-within { transform: none; box-shadow: none; }
+.win-pad { padding: 22px 24px 28px; display: grid; gap: 14px; align-content: start; }
+.win-pad .wrap { padding: 0; max-width: none; }
+.win-pad .about { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; }
+.win-pad .about__photo { max-width: 140px; }
+.win-pad .about__initials { font-size: 32px; }
+.win-pad .about__photo .todo { white-space: normal; text-align: center; margin: 0 8px; }
+.win-pad .section__head { margin-bottom: 12px; }
+.win-pad .section__head h2 { font-size: 26px; }
+.win-pad .about__text { font-size: 16px; }
+.win-pad .timeline__item { padding-bottom: 28px; }
+.win-kicker { font-size: 12.5px; color: var(--accent); }
+.win-title { font-size: 24px; letter-spacing: -0.02em; }
+.win-sub { margin-top: 10px; font-size: 12.5px; font-weight: 500; color: var(--accent); }
+.launcher { display: grid; gap: 6px; }
+.launcher__item {
+  width: 100%; text-align: left; cursor: pointer;
+  padding: 12px 14px; border-radius: 10px;
+  background: var(--bg-sunken); color: var(--text);
+  border: 1px solid var(--line); font-size: 13px;
+  transition: border-color 0.2s;
+}
+.launcher__item::before { content: "$ open "; color: var(--accent); }
+.launcher__item:hover { border-color: var(--accent); }
+.steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+.steps li::marker { color: var(--accent); }
+.evidence { display: grid; gap: 8px; }
+.evidence li { padding-left: 18px; position: relative; }
+.evidence li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); }
+.evidence a { color: var(--text); text-underline-offset: 4px; }
+.evidence a:hover { color: var(--accent); }
+.certs--window { grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); }
+
 /* ---------- Contact & footer ---------- */
 .contact { display: grid; gap: 4px; font-size: 15px; }
 .contact li { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
