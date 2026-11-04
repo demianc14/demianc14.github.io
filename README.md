@@ -36,13 +36,11 @@ Add one object to `data/projects.json`:
 - Badges only for facts stated in the repo (README or Actions). Every badge links to its source.
 - Screenshots: 16:9, under 150 KB, synthetic data only.
 
-## Desktop mode
+## Layout
 
-On screens 900 px or wider with a mouse, the hero works like a desktop: each shortcut and dock item opens a draggable window with the same content as the page below (`js/desktop.js`). On phones and tablets the shortcuts just scroll to their section, and WinBox is never downloaded.
+Two columns on wide screens: a fixed identity panel on the left (name, section nav that follows your scroll, status log, links) and the scrolling content on the right. On small screens it collapses to one column with sticky section titles.
 
-Credits:
-- Window concept inspired by [Kielx/terminal-portfolio](https://github.com/Kielx/terminal-portfolio) (MIT). No code copied.
-- Windows by [WinBox.js](https://github.com/nextapps-de/winbox) 0.2.82 (Apache-2.0), loaded from jsDelivr.
+Layout loosely inspired by [Brittany Chiang's v4](https://github.com/bchiang7/v4) (MIT). No code copied.
 
 ## Deploy (GitHub Pages)
 
