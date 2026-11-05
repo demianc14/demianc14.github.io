@@ -36,7 +36,15 @@
           <ol>
             <li><a href="#about" data-spy="about"><span class="toc__num mono">01</span><span class="toc__line" aria-hidden="true"></span><span class="toc__label" data-i18n="nav.about">About</span></a></li>
             <li><a href="#experience" data-spy="experience"><span class="toc__num mono">02</span><span class="toc__line" aria-hidden="true"></span><span class="toc__label" data-i18n="nav.experience">Experience</span></a></li>
-            <li><a href="#projects" data-spy="projects"><span class="toc__num mono">03</span><span class="toc__line" aria-hidden="true"></span><span class="toc__label" data-i18n="nav.projects">Projects</span></a></li>
+            <li>
+              <a href="#projects" data-spy="projects"><span class="toc__num mono">03</span><span class="toc__line" aria-hidden="true"></span><span class="toc__label" data-i18n="nav.projects">Projects</span></a>
+              <ol class="toc__sub">
+                <li><a href="#python-ai" data-spy="python-ai" data-parent="projects"><span class="mono">.1</span> Python &amp; AI</a></li>
+                <li><a href="#power-bi" data-spy="power-bi" data-parent="projects"><span class="mono">.2</span> Power BI</a></li>
+                <li><a href="#excel" data-spy="excel" data-parent="projects"><span class="mono">.3</span> Excel</a></li>
+                <li><a href="#devops" data-spy="devops" data-parent="projects"><span class="mono">.4</span> Git, CI/CD &amp; Cloud</a></li>
+              </ol>
+            </li>
             <li><a href="#education" data-spy="education"><span class="toc__num mono">04</span><span class="toc__line" aria-hidden="true"></span><span class="toc__label" data-i18n="nav.education">Education</span></a></li>
             <li><a href="#contact" data-spy="contact"><span class="toc__num mono">05</span><span class="toc__line" aria-hidden="true"></span><span class="toc__label" data-i18n="nav.contact">Contact</span></a></li>
           </ol>
@@ -95,7 +103,7 @@
           <li class="row">
             <p class="row__date mono"><time datetime="2026-10">Oct 2026</time> — <span class="accent" data-i18n="common.present">now</span></p>
             <div class="row__body">
-              <h3 class="row__title"><span data-i18n="exp.movmo.role">Development Intern</span> <span class="row__org">· Movmo</span></h3>
+              <h3 class="row__title"><span data-i18n="exp.movmo.role">Software Developer Intern</span> <span class="row__org">· Movmo</span></h3>
               <p class="row__text" data-i18n="exp.movmo.text">I build internal Python tools for the sales team.</p>
               <ul class="pills mono"><li>Python</li></ul>
             </div>
@@ -105,12 +113,12 @@
             <div class="row__body">
               <h3 class="row__title"><span data-i18n="exp.gsc.role">Operations, Data &amp; Automation Intern</span> <span class="row__org">· Galápagos Science Center</span></h3>
               <ul class="row__list" data-i18n="exp.gsc.list">
-                <li>Built the campus admissions validation flow in Power Automate, with JavaScript checks, replacing manual review.</li>
+                <li>Built the campus admissions validation flow in Power Automate, with JavaScript checks, taking manual review of the process to zero.</li>
                 <li>Automated personalized emails to applicants, removing manual follow-up.</li>
-                <li>Reconciled two inconsistent student databases with a cross-checking system in Google Sheets and Excel.</li>
+                <li>Reconciled two inconsistent databases of ~400 students across 19 class sections with a cross-checking system in Google Sheets and Excel.</li>
                 <li>Built a scheduling form in Google Apps Script with conditional branching and real-time slot control.</li>
               </ul>
-              <p class="row__note"><span class="todo">TODO(demian): confirm figures (validation levels, fields, records) and dates against the internship letter</span></p>
+              <p class="row__note"><span class="todo">TODO(demian): confirm validation-flow figures (levels, fields, records) and dates against the internship letter</span></p>
               <ul class="pills mono"><li>Power Automate</li><li>Google Apps Script</li><li>JavaScript</li><li>Google Sheets</li><li>Excel</li></ul>
             </div>
           </li>
@@ -126,14 +134,63 @@
 
       <section class="block" id="projects" aria-labelledby="projects-title">
         <h2 class="block__title mono" id="projects-title"><span class="accent">03</span> / <span data-i18n="projects.title">Projects</span></h2>
-        <p class="block__lede" data-i18n="projects.lede">Pipelines, CLIs and LLM systems with typed contracts, deterministic checks and tests. Every badge links to where it can be verified.</p>
-        <ol class="rows rows--projects" data-projects="python-ai">
-          <li class="mono muted">loading projects.json…</li>
-        </ol>
-        <details class="more">
-          <summary class="mono"><span class="more__plus" aria-hidden="true">+</span> <span data-i18n="projects.more">More projects</span></summary>
-          <ul class="archive" data-projects="python-ai" data-secondary></ul>
-        </details>
+        <p class="block__lede" data-i18n="projects.lede">Grouped by stack. Each group has what I can do there, the work, and the certificates behind it. Every badge links to where it can be verified.</p>
+
+        <div class="stack" id="python-ai" aria-labelledby="python-ai-title">
+          <header class="stack__head">
+            <p class="stack__num mono">03.1</p>
+            <h3 class="stack__title" id="python-ai-title">Python &amp; AI</h3>
+            <p class="stack__lede" data-i18n="stack.python.lede">ETL pipelines, CLIs and LLM agents with Pydantic contracts, deterministic checks and tests.</p>
+          </header>
+          <ol class="rows rows--projects" data-projects="python-ai">
+            <li class="mono muted">loading projects.json…</li>
+          </ol>
+          <details class="more">
+            <summary class="mono"><span class="more__plus" aria-hidden="true">+</span> <span data-i18n="projects.more">More projects</span></summary>
+            <ul class="archive" data-projects="python-ai" data-secondary></ul>
+          </details>
+          <ul class="certs certs--stack" data-certs="python-ai" aria-label="Python and AI certificates"></ul>
+        </div>
+
+        <div class="stack" id="power-bi" aria-labelledby="power-bi-title">
+          <header class="stack__head">
+            <p class="stack__num mono">03.2</p>
+            <h3 class="stack__title" id="power-bi-title">Power BI</h3>
+            <p class="stack__lede" data-i18n="stack.pbi.lede">Data models and dashboards that answer one business question each.</p>
+          </header>
+          <div class="wip">
+            <p class="wip__label mono"><span class="accent">●</span> in progress · current course</p>
+            <p class="muted" data-i18n="stack.pbi.wip">Each project here will follow the same structure:</p>
+            <ol class="steps mono"><li>business question</li><li>data source</li><li>model</li><li>screenshots</li><li>findings</li><li>link</li></ol>
+            <p><span class="todo">TODO(demian): Power BI projects</span></p>
+          </div>
+          <ul class="certs certs--stack" data-certs="power-bi" aria-label="Power BI certificates"></ul>
+        </div>
+
+        <div class="stack" id="excel" aria-labelledby="excel-title">
+          <header class="stack__head">
+            <p class="stack__num mono">03.3</p>
+            <h3 class="stack__title" id="excel-title">Excel</h3>
+            <p class="stack__lede" data-i18n="stack.excel.lede">Cleaning, cross-checking and reconciling spreadsheets so manual processes stop being manual.</p>
+          </header>
+          <div class="wip">
+            <p class="wip__label mono"><span class="accent">●</span> in progress · current course</p>
+            <p class="muted" data-i18n="stack.excel.wip">In production so far: the database reconciliation at Galápagos Science Center (see <a href="#experience">Experience</a>). Course projects land here with the same structure as Power BI.</p>
+            <p><span class="todo">TODO(demian): Excel projects</span></p>
+          </div>
+          <ul class="certs certs--stack" data-certs="excel" aria-label="Excel certificates"></ul>
+        </div>
+
+        <div class="stack" id="devops" aria-labelledby="devops-title">
+          <header class="stack__head">
+            <p class="stack__num mono">03.4</p>
+            <h3 class="stack__title" id="devops-title">Git, CI/CD &amp; Cloud</h3>
+            <p class="stack__lede" data-i18n="stack.devops.lede">Version control, CI on every push, and the basics of shipping to the cloud.</p>
+          </header>
+          <ul class="evidence" data-evidence></ul>
+          <p class="stack__cta"><a class="demo-link" href="https://github.com/demianc14" target="_blank" rel="noopener">github.com/demianc14 ↗</a></p>
+          <ul class="certs certs--stack" data-certs="devops" aria-label="Git, CI/CD and cloud certificates"></ul>
+        </div>
       </section>
 
       <section class="block" id="education" aria-labelledby="education-title">
@@ -150,14 +207,13 @@
             <p class="row__date mono"><time datetime="2026-02">Feb</time> — <time datetime="2026-06">Jun 2026</time></p>
             <div class="row__body">
               <h3 class="row__title"><span data-i18n="edu.coil.role">COIL international project</span> <span class="row__org">· Tec de Monterrey – USFQ</span></h3>
-              <p class="row__text" data-i18n="edu.coil.text">Python tool for industrial electricity bills, built in an international team for an energy-sector client. My part: the cleaning and validation module for historical series. Later reorganized as <a href="https://github.com/demianc14/power-factor-analyzer" target="_blank" rel="noopener">power-factor-analyzer</a>.</p>
+              <p class="row__text" data-i18n="edu.coil.text">Global Shared Learning: Classroom. Python prototype to help an energy-sector client avoid low power-factor penalties, built by a 7-person team from Mexico and Ecuador. I built the data-quality engine (structural and physical-range validation), the reactive power and capacitor-bank sizing, and the trend chart against the 0.95 target. Later reorganized as <a href="https://github.com/demianc14/power-factor-analyzer" target="_blank" rel="noopener">power-factor-analyzer</a>.</p>
             </div>
           </li>
         </ol>
-        <h3 class="subhead mono" id="certs-title" data-i18n="education.certs">Certifications &amp; courses</h3>
-        <ul class="certs" data-certs aria-labelledby="certs-title">
-          <li class="mono muted">loading certs.json…</li>
-        </ul>
+        <h3 class="subhead mono" id="certs-title" data-i18n="education.certs">Program certificate</h3>
+        <ul class="certs" data-certs="education" aria-labelledby="certs-title"></ul>
+        <p class="block__note muted" data-i18n="education.note">Course certificates live with their stack under <a href="#projects">Projects</a>.</p>
       </section>
 
       <section class="block block--contact" id="contact" aria-labelledby="contact-title">

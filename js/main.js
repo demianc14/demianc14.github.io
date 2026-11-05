@@ -167,34 +167,50 @@ function renderCert(c) {
     a.setAttribute("aria-label", `Verify ${c.name} (opens in a new tab)`);
     meta.append(a);
   }
+  if (c.note) meta.append(el("span", null, c.note));
   if (c.todo) meta.append(el("span", "todo", c.todo));
-  else if (!c.url && c.status !== "upcoming") {
+  else if (!c.url && !c.note && c.status !== "upcoming") {
     meta.append(el("span", "todo", c.date ? "TODO(demian): link" : "TODO(demian): date + link"));
   }
   li.append(meta);
   return li;
 }
 
+// Each list on the page asks for one stack (data-certs="power-bi", …); empty lists are hidden.
 async function loadCerts() {
-  const list = document.querySelector("[data-certs]");
-  if (!list) return;
+  const lists = document.querySelectorAll("[data-certs]");
   try {
     const res = await fetch("data/certs.json");
     if (!res.ok) throw new Error(res.status);
     const certs = await res.json();
-    const pending = el("li", "cert cert--upcoming");
-    const pendingMeta = el("div", "cert__meta mono");
-    pendingMeta.append(el("span", "todo", "TODO(demian): exact list"));
-    pending.append(
-      el("span", "cert__issuer mono", "DataCamp"),
-      el("span", "cert__name", "More Power BI, Excel and GitHub certificates"),
-      pendingMeta,
-    );
-    list.replaceChildren(...certs.map(renderCert), pending);
-    observeReveal(list.querySelectorAll(".cert"));
+    for (const list of lists) {
+      const mine = certs.filter((c) => c.stack === list.dataset.certs);
+      list.replaceChildren(...mine.map(renderCert));
+      list.hidden = !mine.length;
+      observeReveal(list.querySelectorAll(".cert"));
+    }
   } catch (err) {
-    list.replaceChildren(el("li", "mono muted", "Could not load data/certs.json."));
+    lists[0]?.replaceChildren(el("li", "mono muted", "Could not load data/certs.json."));
   }
+}
+
+/* ---------- Git & CI evidence ---------- */
+// Built from the CI badges in projects.json, plus one fact stated in a README.
+function renderEvidence(projects) {
+  const list = document.querySelector("[data-evidence]");
+  if (!list) return;
+  const item = (text, href) => {
+    const li = el("li");
+    const a = external(el("a", null, text));
+    a.href = href;
+    li.append(a);
+    return li;
+  };
+  const ci = projects.filter((p) => (p.badges || []).some((b) => b.label.startsWith("CI")));
+  list.replaceChildren(
+    ...ci.map((p) => item(`${p.title}: GitHub Actions CI on every push`, p.badges.find((b) => b.label.startsWith("CI")).source)),
+    item("family-expense-bot: a test scans every object in the git history for secrets", "https://github.com/demianc14/family-expense-bot#readme"),
+  );
 }
 
 /* ---------- Reveal on scroll ---------- */
@@ -214,18 +230,21 @@ function observeReveal(nodes) {
 
 /* ---------- Scrollspy ---------- */
 // The section whose top has passed 35% of the viewport is the active one in the side nav.
+// Project subsections light up their own link and keep "Projects" active too.
 const spyLinks = [...document.querySelectorAll("[data-spy]")];
-const spySections = spyLinks.map((a) => document.getElementById(a.dataset.spy)).filter(Boolean);
+const spySections = spyLinks.map((a) => document.getElementById(a.dataset.spy)).filter(Boolean)
+  .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
 function syncSpy() {
   const line = innerHeight * 0.35;
-  let current = spySections[0];
-  for (const s of spySections) if (s.getBoundingClientRect().top <= line) current = s;
+  const passed = spySections.filter((s) => s.getBoundingClientRect().top <= line);
   // At the very bottom, the last section wins even if it's short.
-  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) current = spySections.at(-1);
+  const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+  const top = atEnd ? spySections.at(-1) : passed.at(-1) || spySections[0];
+  const current = top?.id;
+  const parent = spyLinks.find((a) => a.dataset.spy === current)?.dataset.parent;
   for (const a of spyLinks) {
-    const on = a.dataset.spy === current?.id;
-    a.classList.toggle("is-active", on);
-    if (on) a.setAttribute("aria-current", "true");
+    a.classList.toggle("is-active", a.dataset.spy === current || a.dataset.spy === parent);
+    if (a.dataset.spy === current) a.setAttribute("aria-current", "true");
     else a.removeAttribute("aria-current");
   }
 }
@@ -275,5 +294,5 @@ function writeLog(lines) {
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
 observeReveal(document.querySelectorAll("#experience .row, #education .row"));
-loadProjects().then((projects) => writeLog(bootLines(projects)));
+loadProjects().then((projects) => { writeLog(bootLines(projects)); renderEvidence(projects); });
 loadCerts();

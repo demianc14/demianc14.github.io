@@ -1,23 +1,30 @@
 [
   {
-    "issuer": "AWS Academy",
-    "name": "Microservices and CI/CD Pipeline Builder",
-    "date": "2026",
-    "url": null,
+    "issuer": "DataCamp",
+    "name": "Claude Code 101",
+    "date": null,
+    "url": "https://www.datacamp.com/statement-of-accomplishment/course/5cadeb9ce4177204e7309ea85bb845939cbee608",
     "stack": "python-ai"
   },
   {
-    "issuer": "IBM",
-    "name": "Introducción a la IA",
-    "date": "2025",
-    "url": null,
+    "issuer": "IBM · Coursera",
+    "name": "AI Foundations: How Artificial Intelligence Works",
+    "date": "Jul 2025",
+    "url": "https://www.coursera.org/verify/GOCIBKR3T9IK",
     "stack": "python-ai"
   },
   {
-    "issuer": "Google",
-    "name": "Prompting para tareas de trabajo",
-    "date": "2025",
-    "url": null,
+    "issuer": "Google · Coursera",
+    "name": "Design Prompts for Everyday Work Tasks",
+    "date": "Jul 2025",
+    "url": "https://www.coursera.org/verify/Q7ZY8QUWY7M7",
+    "stack": "python-ai"
+  },
+  {
+    "issuer": "Google · Coursera",
+    "name": "Start Writing Prompts like a Pro",
+    "date": "Jul 2025",
+    "url": "https://www.coursera.org/verify/XQM85KK4W1LW",
     "stack": "python-ai"
   },
   {
@@ -30,38 +37,45 @@
   },
   {
     "issuer": "DataCamp",
-    "name": "Introduction to AI Agents",
-    "date": null,
-    "url": null,
-    "stack": "python-ai"
-  },
-  {
-    "issuer": "DataCamp",
-    "name": "Claude Code 101",
-    "date": null,
-    "url": null,
-    "stack": "python-ai",
-    "todo": "TODO(demian): confirm issuer, date + link"
-  },
-  {
-    "issuer": "DataCamp",
-    "name": "Working with APIs in Python",
-    "date": null,
-    "url": null,
-    "stack": "python-ai"
-  },
-  {
-    "issuer": "DataCamp",
     "name": "Introduction to Power BI",
-    "date": null,
-    "url": null,
+    "date": "Oct 2026",
+    "url": "https://www.datacamp.com/statement-of-accomplishment/course/145d451e56d1c4d5fab45ff6558bfc981052c615",
     "stack": "power-bi"
   },
   {
     "issuer": "DataCamp",
     "name": "Introduction to Excel",
-    "date": null,
-    "url": null,
+    "date": "Oct 2026",
+    "url": "https://www.datacamp.com/statement-of-accomplishment/course/648bb5ee40ecc6b2ed5144a6b0f4bf208a5f9948",
     "stack": "excel"
+  },
+  {
+    "issuer": "DataCamp · GitHub",
+    "name": "GitHub Foundations (4-course track)",
+    "date": "Oct 2026",
+    "url": "https://www.datacamp.com/statement-of-accomplishment/track/93edf9aad61c0a9a43bd20cb58e7a77c51bd685e",
+    "stack": "devops"
+  },
+  {
+    "issuer": "DataCamp",
+    "name": "Containerization and Virtualization Concepts",
+    "date": null,
+    "url": "https://www.datacamp.com/statement-of-accomplishment/course/e68d0c85dde0fee0032072be4e93fb802183134b",
+    "stack": "devops"
+  },
+  {
+    "issuer": "AWS Academy · Credly",
+    "name": "Microservices and CI/CD Pipeline Builder",
+    "date": "May 2026",
+    "url": "https://www.credly.com/badges/b7c261b9-6754-4381-8667-2017866a2f91",
+    "stack": "devops"
+  },
+  {
+    "issuer": "Tecnológico de Monterrey",
+    "name": "Global Shared Learning: Classroom (COIL)",
+    "date": "Jun 2026",
+    "url": null,
+    "stack": "education",
+    "note": "Credential ID 1546-43"
   }
 ]
